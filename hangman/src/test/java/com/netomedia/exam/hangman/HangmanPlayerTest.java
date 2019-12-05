@@ -34,6 +34,7 @@ public class HangmanPlayerTest extends TestCase {
 	 * 
 	 * @throws Exception
 	 */
+	@SuppressWarnings("deprecation")
 	public void testApp() throws Exception {
 
 		ArrayList<String> allWords = new ArrayList<String>();
@@ -49,7 +50,7 @@ public class HangmanPlayerTest extends TestCase {
 		int TESTED_WORDS_COUNT = allWords.size();
 		System.out.println("Calculating average error for all words... (estimate time 4 hours)");
 		for (int i = 0; i < TESTED_WORDS_COUNT; i++) {
-			if (i % 1000 == 0 && i!=0) {
+			if (i % 1000 == 0 && i != 0) {
 				System.out.println("Processed " + i + "\\" + TESTED_WORDS_COUNT + " words...");
 			}
 			failedAttempts += hangmanPlayer.play(allWords.get(i));
