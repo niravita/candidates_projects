@@ -158,6 +158,8 @@ public class HangmanServer {
 	}
 
 	public ServerResponse startNewGame(String word) {
+		this.previousGuesses.clear();
+		attempts = failedAttempts = 0;
 		createNewHangman(word);
 		System.out.println("*** Initialized a new Hangman Game with a predefined word! ***");
 		return new ServerResponse(generateNewToken(), hangman, null);

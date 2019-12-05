@@ -37,7 +37,7 @@ public class HangmanPlayerTest extends TestCase {
 
 		ArrayList<String> allWords = new ArrayList<String>();
 
-		HangmanPlayer.loadFile(HangmanPlayer.RESOURCES_PATH + HangmanPlayer.DICTIONARY_FILE_NAME, allWords, null);
+		HangmanPlayer.loadFile(HangmanPlayer.RESOURCES_PATH + HangmanPlayer.DICTIONARY_FILE_NAME, allWords, 3);
 
 		System.out.println(allWords.size());
 
