@@ -42,19 +42,19 @@ public class HangmanServer {
 
 		createNewHangman();
 
-		System.out.println("*** Initialized a new Hangman Game! ***");
+//		System.out.println("*** Initialized a new Hangman Game! ***");
 		return new ServerResponse(generateNewToken(), hangman, null);
 	}
 
 	public ServerResponse guess(String token, String guess) throws Exception {
 		if (!isTokenValid(token)) {
-			System.out.println("The token " + token + " is invalid!");
+//			System.out.println("The token " + token + " is invalid!");
 			return new ServerResponse(generateNewToken(), previousHangman, false);
 		}
 
 		if (!hangman.contains("_")) {
-			System.out.println(
-					"Yay! you won the game in " + attempts + " attempts! (" + failedAttempts + " failedAttempts)");
+//			System.out.println(
+//					"Yay! you won the game in " + attempts + " attempts! (" + failedAttempts + " failedAttempts)");
 			new ServerResponse(generateNewToken(), hangman, true, true, failedAttempts);
 		}
 
@@ -63,13 +63,13 @@ public class HangmanServer {
 		}
 
 		if (previousGuesses.contains(guess)) {
-			System.out.println("The guess " + guess + " has already been tried out");
+//			System.out.println("The guess " + guess + " has already been tried out");
 			return new ServerResponse(generateNewToken(), previousHangman, false);
 		}
 
 		previousGuesses.add(guess);
 		attempts++;
-		System.out.println("Guess number: " + attempts + " out of: " + MAX_PLAYER_REQUESTS);
+//		System.out.println("Guess number: " + attempts + " out of: " + MAX_PLAYER_REQUESTS);
 
 		if (word.contains(guess)) {
 			// correct guess
@@ -79,8 +79,8 @@ public class HangmanServer {
 		}
 
 		if (!hangman.contains("_")) {
-			System.out.println(
-					"Yay! you won the game in " + attempts + " attempts! (" + failedAttempts + " failedAttempts)");
+//			System.out.println(
+//					"Yay! you won the game in " + attempts + " attempts! (" + failedAttempts + " failedAttempts)");
 			return new ServerResponse(generateNewToken(), hangman, true, true, failedAttempts);
 		}
 
@@ -161,7 +161,7 @@ public class HangmanServer {
 		this.previousGuesses.clear();
 		attempts = failedAttempts = 0;
 		createNewHangman(word);
-		System.out.println("*** Initialized a new Hangman Game with a predefined word! ***");
+//		System.out.println("*** Initialized a new Hangman Game with a predefined word (" + word + ") ***");
 		return new ServerResponse(generateNewToken(), hangman, null);
 	}
 

@@ -1,6 +1,7 @@
 package com.netomedia.exam.hangman;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.netomedia.exam.hangman.player.HangmanPlayer;
 
@@ -37,18 +38,23 @@ public class HangmanPlayerTest extends TestCase {
 
 		ArrayList<String> allWords = new ArrayList<String>();
 
-		HangmanPlayer.loadFile(HangmanPlayer.RESOURCES_PATH + HangmanPlayer.DICTIONARY_FILE_NAME, allWords, 3);
+		HangmanPlayer.loadFile(HangmanPlayer.RESOURCES_PATH + HangmanPlayer.DICTIONARY_FILE_NAME, allWords, null);
 
-		System.out.println(allWords.size());
+		Collections.shuffle(allWords);
 
 		HangmanPlayer hangmanPlayer = new HangmanPlayer();
 
 		int failedAttempts = 0;
 
-		for (String word : allWords) {
-			failedAttempts += hangmanPlayer.play(word);
+		int TESTED_WORDS_COUNT = allWords.size();
+		System.out.println("Calculating average error for all words...");
+		for (int i = 0; i < TESTED_WORDS_COUNT; i++) {
+			if (i % 1000 == 0 && i!=0) {
+				System.out.println("Processed " + i + "\\" + TESTED_WORDS_COUNT + " words...");
+			}
+			failedAttempts += hangmanPlayer.play(allWords.get(i));
 		}
-
-		System.out.println("average failedAttempts: " + new Double(failedAttempts / allWords.size()));
+		Double avrgFailedAttempts = (double) (new Double(failedAttempts) / new Double(TESTED_WORDS_COUNT));
+		System.out.println("average failedAttempts: " + avrgFailedAttempts);
 	}
 }

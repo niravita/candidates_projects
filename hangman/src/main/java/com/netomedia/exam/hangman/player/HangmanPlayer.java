@@ -51,7 +51,7 @@ public class HangmanPlayer {
 				guess = mostFrequestLetter.getLetterString();
 			}
 
-			System.out.println("Your guess is: " + guess);
+//			System.out.println("Your guess is: " + guess);
 
 			serverResponse = server.guess(currentToken, guess);
 			filterWordsFromDict(serverResponse, guess);
@@ -89,7 +89,7 @@ public class HangmanPlayer {
 				guess = mostFrequestLetter.getLetterString();
 			}
 
-			System.out.println("Your guess is: " + guess);
+//			System.out.println("Your guess is: " + guess);
 
 			serverResponse = server.guess(currentToken, guess);
 			if (serverResponse.getGameEnded()) {
